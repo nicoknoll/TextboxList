@@ -10,12 +10,12 @@
  *
  */
 
-class FieldtypeTextboxList extends Fieldtype {
+class FieldtypeTextboxList extends FieldtypeText {
 
 	public static function getModuleInfo() {
 		return array(
 			'title' => 'TextboxList',
-			'version' => 100,
+			'version' => 101,
 			'summary' => 'Field that stores a TextboxList.'
 		);
 	}

@@ -15,7 +15,7 @@ class InputfieldTextboxList extends Inputfield {
      public static function getModuleInfo() {
 	  return array(
 		  'title' => 'TextboxList',
-		  'version' => 100,
+		  'version' => 101,
 		  'summary' => 'Facebook like TextboxList.',
 		  'permanent' => true
 		  );
