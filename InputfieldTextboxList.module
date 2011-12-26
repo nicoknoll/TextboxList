@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * ProcessWire TextboxList
+ *
+ * By Nico Knoll (http://www.nico-knoll.de/)
+ *
+ *
+ * Based on TextboxList.js by Guillermo Rauch
+ *
+ */
+
+class InputfieldTextboxList extends Inputfield {
+	
+     public static function getModuleInfo() {
+	  return array(
+		  'title' => 'TextboxList',
+		  'version' => 100,
+		  'summary' => 'Facebook like TextboxList.',
+		  'permanent' => true
+		  );
+     }
+
+	public function __construct() {
+		parent::__construct();
+		$this->setAttribute('type', 'text'); 
+		$this->setAttribute('size', 0); 
+	}
+
+	public function ___render() {
+		$out = "\n<p><input " . $this->getAttributesString() . " /></p>";
+		$out .= '<script type="text/javascript" charset="utf-8">		
+					$(function(){
+						$(\'#'.$this->getAttribute('id').'\').textboxlist({bitsOptions:{editable:{addKeys: [188, 13]}}});		
+					});
+				</script>'; 
+		return $out; 
+	}
+
+	public function getAttributes() {
+		$attrs = parent::getAttributes();
+		if(empty($attrs['size'])) {
+			unset($attrs['size']); 
+			$attrs['class'] = (empty($attrs['class']) ? '' : $attrs['class'] . ' ') . 'InputfieldMaxWidth';
+		}
+		return $attrs; 
+	}
+
+	public function setAttribute($key, $value) {
+
+		if($key == 'maxlength' && !(int) $value) $value = ''; // blank string prevents a maxlength='0' attribute
+
+		if($key == 'value') { 
+			$value = trim($value); 
+			$maxlength = (int) $this->attr('maxlength'); 
+			if($maxlength > 0) $value = substr($value, 0, $maxlength); 
+		}
+
+		return parent::setAttribute($key, $value); 
+	}}

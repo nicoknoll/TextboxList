@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * ProcessWire TextboxList
+ *
+ * By Nico Knoll (http://www.nico-knoll.de/)
+ *
+ *
+ * Based on TextboxList.js by Guillermo Rauch
+ *
+ */
+
+class FieldtypeTextboxList extends Fieldtype {
+
+	public static function getModuleInfo() {
+		return array(
+			'title' => 'TextboxList',
+			'version' => 100,
+			'summary' => 'Field that stores a TextboxList.'
+		);
+	}
+
+	public function init() {	
+		parent::init();
+	}
+
+	public function ___getCompatibleFieldtypes(Field $field) {
+		$fieldtypes = new Fieldtypes();
+		return $fieldtypes; 
+	}
+
+	public function sanitizeValue(Page $page, Field $field, $value) {
+		$this->config->styles->add($this->config->urls->FieldtypeTextboxList.'TextboxList.css');
+		$this->config->scripts->add($this->config->urls->FieldtypeTextboxList.'GrowingInput.js');
+		$this->config->scripts->add($this->config->urls->FieldtypeTextboxList.'TextboxList.js');
+		return $value; 
+	}
+
+	public function formatValue(Page $page, Field $field, $value) {
+		return $value; 
+		
+	}
+
+	public function getInputfield(Page $page, Field $field) {
+		$inputField = $this->modules->get('InputfieldTextboxList'); 
+		return $inputField; 
+	}
+
+	public function getMatchQuery($query, $table, $subfield, $operator, $value) {
+		$ft = new DatabaseQuerySelectFulltext($query); 
+		$ft->match($table, $subfield, $operator, $value); 
+		return $query; 
+	}
+
+	public function getDatabaseSchema(Field $field) {
+		$schema = parent::getDatabaseSchema($field); 
+		$schema['data'] = 'text NOT NULL';
+		$schema['keys']['data_exact'] = 'KEY `data_exact` (`data`(255))'; 
+		$schema['keys']['data'] = 'FULLTEXT KEY `data` (`data`)'; 
+		return $schema;
+	}
+	
+}
+
