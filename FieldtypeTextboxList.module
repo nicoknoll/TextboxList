@@ -30,9 +30,6 @@ class FieldtypeTextboxList extends FieldtypeText {
 	}
 
 	public function sanitizeValue(Page $page, Field $field, $value) {
-		$this->config->styles->add($this->config->urls->FieldtypeTextboxList.'TextboxList.css');
-		$this->config->scripts->add($this->config->urls->FieldtypeTextboxList.'GrowingInput.js');
-		$this->config->scripts->add($this->config->urls->FieldtypeTextboxList.'TextboxList.js');
 		return $value; 
 	}
 

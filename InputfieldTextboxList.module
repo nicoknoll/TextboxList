@@ -16,8 +16,7 @@ class InputfieldTextboxList extends Inputfield {
 	  return array(
 		  'title' => 'TextboxList',
 		  'version' => 101,
-		  'summary' => 'Facebook like TextboxList.',
-		  'permanent' => true
+		  'summary' => 'Facebook like TextboxList.'
 		  );
      }
 
@@ -28,6 +27,10 @@ class InputfieldTextboxList extends Inputfield {
 	}
 
 	public function ___render() {
+		$this->config->styles->add($this->config->urls->FieldtypeTextboxList.'TextboxList.css');
+		$this->config->scripts->add($this->config->urls->FieldtypeTextboxList.'GrowingInput.js');
+		$this->config->scripts->add($this->config->urls->FieldtypeTextboxList.'TextboxList.js');
+		
 		$out = "\n<p><input " . $this->getAttributesString() . " /></p>";
 		$out .= '<script type="text/javascript" charset="utf-8">		
 					$(function(){
