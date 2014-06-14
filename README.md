@@ -1,7 +1,7 @@
 TextboxList
 ===========
 
-_This inputfield adds Facebook like TextboxLists to ProcessWire._
+**This inputfield adds Facebook like TextboxLists to ProcessWire.**
 
 
 
