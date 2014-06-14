@@ -9,4 +9,12 @@ The fields contents are stored as a comma separated list in the database.
 
 Here is a small example on how to output it in your template:
 
-> abc
+<pre>
+// "tags" is the name of the field
+$tags = $page->tags;
+
+foreach(explode(',', $tags) as $tag) {
+  echo trim($tag).'<br>';
+}
+
+</pre>
