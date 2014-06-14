@@ -10,13 +10,14 @@
  *
  */
 
-class InputfieldTextboxList extends Inputfield {
+class InputfieldTextboxList extends InputfieldText {
 	
      public static function getModuleInfo() {
 	  return array(
 		  'title' => 'TextboxList',
-		  'version' => 101,
-		  'summary' => 'Facebook like TextboxList.'
+		  'version' => 120,
+		  'summary' => 'Facebook like TextboxList.',
+		  'requires' => array("FieldtypeTextboxList")
 		  );
      }
 
@@ -24,18 +25,15 @@ class InputfieldTextboxList extends Inputfield {
 		parent::__construct();
 		$this->setAttribute('type', 'text'); 
 		$this->setAttribute('size', 0); 
+		$this->setAttribute('class', 'InputfieldTextboxListField'); 
 	}
 
-	public function ___render() {
-		$this->config->styles->add($this->config->urls->FieldtypeTextboxList.'TextboxList.css');
-		$this->config->scripts->add($this->config->urls->FieldtypeTextboxList.'GrowingInput.js');
-		$this->config->scripts->add($this->config->urls->FieldtypeTextboxList.'TextboxList.js');
-		
+	public function ___render() {		
 		$out = "\n<p><input " . $this->getAttributesString() . " /></p>";
 		$out .= '<script type="text/javascript" charset="utf-8">		
-					$(function(){
+					/*$(function(){
 						$(\'#'.$this->getAttribute('id').'\').textboxlist({bitsOptions:{editable:{addKeys: [188, 13]}}});		
-					});
+					});*/
 				</script>'; 
 		return $out; 
 	}
@@ -60,4 +58,7 @@ class InputfieldTextboxList extends Inputfield {
 		}
 
 		return parent::setAttribute($key, $value); 
-	}}
+	}
+}
+		
+?>

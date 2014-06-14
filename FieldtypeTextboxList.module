@@ -15,8 +15,9 @@ class FieldtypeTextboxList extends FieldtypeText {
 	public static function getModuleInfo() {
 		return array(
 			'title' => 'TextboxList',
-			'version' => 101,
-			'summary' => 'Field that stores a TextboxList.'
+			'version' => 120,
+			'summary' => __('Field that stores a TextboxList.'),
+			'installs' => 'InputfieldTextboxList'
 		);
 	}
 
@@ -29,11 +30,12 @@ class FieldtypeTextboxList extends FieldtypeText {
 		return $fieldtypes; 
 	}
 
-	public function sanitizeValue(Page $page, Field $field, $value) {
+
+	public function ___sanitizeValue(Page $page, Field $field, $value) {
 		return $value; 
 	}
 
-	public function formatValue(Page $page, Field $field, $value) {
+	public function ___formatValue(Page $page, Field $field, $value) {
 		return $value; 
 		
 	}
