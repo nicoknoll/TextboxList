@@ -15,7 +15,7 @@ $tags = $page->tags;
 
 // split the comma seperated list
 foreach(explode(',', $tags) as $tag) {
-  echo trim($tag).'&lt;br>';
+  echo trim($tag).'<br>';
 }
 
 ```
