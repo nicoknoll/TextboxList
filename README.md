@@ -13,8 +13,9 @@ Here is a small example on how to output it in your template:
 // "tags" is the name of the field
 $tags = $page->tags;
 
+// split the comma seperated list
 foreach(explode(',', $tags) as $tag) {
-  echo trim($tag).'<br>';
+  echo trim($tag).'&lt;br>';
 }
 
 </pre>
