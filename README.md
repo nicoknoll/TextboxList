@@ -1,6 +1,14 @@
 TextboxList
 ===========
 
+As there is a new Module called [InputfieldChosenSelect](http://modules.processwire.com/modules/inputfield-chosen-select/) which uses the same interface but works as a Page Field what is probably even smarter I discontinue supporting this module here. But if you should prefer a comma sepearated list instead of real pages feel free to still use it.
+
+
+
+----
+
+
+
 **This inputfield adds Facebook like TextboxLists to ProcessWire.**
 
 ![](https://processwire.com/talk/uploads/monthly_01_2012/post-5023-132614281893.png)
